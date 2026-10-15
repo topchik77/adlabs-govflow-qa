@@ -1,0 +1,12 @@
+fastapi==0.119.0
+uvicorn==0.37.0
+SQLAlchemy==2.0.44
+alembic==1.17.0
+psycopg[binary]==3.2.10
+PyJWT==2.10.1
+pwdlib[argon2]==0.3.0
+python-multipart==0.0.22
+python-dotenv==1.1.1
+httpx==0.28.1
+pytest==8.4.2
+ruff==0.14.1

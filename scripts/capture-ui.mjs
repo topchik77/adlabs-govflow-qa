@@ -1,0 +1,25 @@
+// Capture real running UI. Tokens and credentials never enter screenshots/logs.
+import { createRequire } from 'node:module';
+import { readFileSync, mkdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+const require = createRequire(new URL('../frontend/demo-portal/package.json', import.meta.url));
+const { chromium } = require('@playwright/test');
+const root = new URL('../', import.meta.url);
+const password = readFileSync(new URL('.env', root), 'utf8').match(/^DEMO_PASSWORD=(.+)$/m)[1].trim();
+const target = new URL('docs/screenshots/', root);
+mkdirSync(target, { recursive: true });
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+await page.goto('http://127.0.0.1:8014');
+await page.getByRole('combobox', { name: 'Учётная запись', exact: true }).selectOption('applicant.a');
+await page.getByLabel('Пароль локального стенда').fill(password);
+await page.getByRole('button', { name: 'Войти в пространство' }).click();
+await page.locator('.login-overlay').waitFor({ state: 'hidden' });
+await page.getByRole('button', { name: /Демо · Разрешение на учебный павильон/ }).waitFor();
+await page.evaluate(() => document.fonts.ready);
+await page.locator('.page-heading .primary').evaluate(el => Promise.all(el.getAnimations().map(a => a.finished)));
+await page.screenshot({ path: fileURLToPath(new URL('desktop.png', target)), fullPage: true });
+await page.setViewportSize({ width: 390, height: 844 });
+await page.screenshot({ path: fileURLToPath(new URL('mobile.png', target)), fullPage: true });
+await browser.close();
+console.log('Captured real desktop/mobile UI in docs/screenshots.');

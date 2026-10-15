@@ -1,0 +1,34 @@
+requirement,risk,test_case,automated_test,evidence
+INV-03,tenant-leak,TC-001,test_object_isolation_every_read_surface,reports/pytest.xml
+INV-02,duplicate-submit,TC-002,test_concurrent_submit_deduplicates_and_replays_original_response,reports/pytest.xml
+INV-02,key-payload-conflict,TC-003,test_concurrent_submit_deduplicates_and_replays_original_response,reports/pytest.xml
+INV-07,stale-signature,TC-004,test_edit_invalidates_signed_revision,reports/pytest.xml
+FR-AUTH-04,cross-tenant-review,TC-005,test_cross_tenant_commands_do_not_mutate,reports/pytest.xml
+FR-APP-06,lost-update,TC-006,test_stale_edit_rolls_back,reports/pytest.xml
+FR-APP-05,concurrent-update,TC-007,test_concurrent_edits_one_winner,reports/pytest.xml
+FR-SIGN-05,wrong-hash,TC-008,test_wrong_hash_does_not_sign,reports/pytest.xml
+INV-01,missing-signatures,TC-009,test_complete_flow_two_distinct_signatures_and_contiguous_audit,reports/pytest.xml
+INV-05,terminal-mutation,TC-010,test_terminal_states_immutable,reports/pytest.xml
+FR-APP-03,unsupported-upload,TC-011,test_attachment_boundaries_are_atomic,reports/pytest.xml
+FR-APP-03,spoofed-mime,TC-012,test_attachment_boundaries_are_atomic,reports/pytest.xml
+FR-APP-03,path-traversal,TC-013,test_attachment_boundaries_are_atomic,reports/pytest.xml
+FR-APP-03,oversized-file,TC-014,test_attachment_boundaries_are_atomic,reports/pytest.xml
+FR-AUTH-02,jwt-forgery,TC-015,test_auth_rejects_invalid_claims,reports/pytest.xml
+FR-AUTH-03,disabled-identity,TC-016,test_disabled_identity_rejects_previously_issued_token,reports/pytest.xml
+FR-AUTH-05,bad-password,TC-017,test_login_real_password_hash_and_no_secret_reflection,reports/pytest.xml
+FR-APP-02,mass-assignment,TC-018,test_mass_assignment_forbidden,reports/pytest.xml
+FR-AUTH-03,role-escalation,TC-019,test_non_applicant_cannot_create,reports/pytest.xml
+FR-SIGN-01,unsigned-submit,TC-020,test_unsigned_submission_rejected_without_event,reports/pytest.xml
+FR-SIGN-02,corrupted-signature,TC-021,test_corrupt_stored_proof_detected,reports/pytest.xml
+FR-APP-01,tenant-pagination-leak,TC-022,test_pagination_filters_tenant_before_limit,reports/pytest.xml
+FR-REV-02,unjustified-decision,TC-023,test_review_requires_successful_check_and_reason,reports/pytest.xml
+FR-SIGN-04,wrong-decision-signer,TC-024,test_officer_only_and_correct_decision_hash,reports/pytest.xml
+FR-APP-04,correction-signature,TC-025,test_correction_requires_new_signature_and_can_complete,reports/pytest.xml
+FR-AUTH-01,observer-disclosure,TC-026,test_observer_only_anonymized_aggregates,reports/pytest.xml
+INV-04,late-local-task,TC-027,test_local_process_redelivery_and_late_call_have_no_effect,reports/pytest.xml
+FR-EXT-06,partial-commit,TC-028,test_transaction_rollback_removes_state_audit_and_outbox,reports/pytest.xml
+FR-APP-05,illegal-transition,TC-029,test_all_unlisted_state_transitions_rejected,reports/pytest.xml
+FR-AUDIT-01,broken-api-contract,TC-030,test_openapi_typed_contract_and_correlation,reports/pytest.xml
+FR-UI-02,ui-business-flow,TC-031,UI: applicant → reviewer → officer,reports/playwright.xml
+FR-UI-05,mobile-overflow,TC-032,mobile layout and live search empty state,reports/playwright.xml
+FR-UI-04,observer-ui,TC-033,QA observer sees real monitor,reports/playwright.xml

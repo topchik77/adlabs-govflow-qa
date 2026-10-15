@@ -1,0 +1,436 @@
+{
+  "build": "0.1.0",
+  "stage": "1-reference",
+  "seed": 42,
+  "synthetic": true,
+  "flows": [
+    {
+      "application_id": "98a1d1b8-bf53-465a-86b4-5ec63f27cb2a",
+      "title": "Демо · Разрешение на учебный павильон",
+      "status": "COMPLETED",
+      "version": 10,
+      "document_hash": "e4ad090b2831c7269b68814466684ce567b897915a00e126f911931c1ead7fcd",
+      "audit": [
+        {
+          "id": "acbc658d-2990-4279-988a-da6790408b2b",
+          "version": 1,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "CREATED",
+          "before": null,
+          "after": "DRAFT",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:06.721160+00:00"
+        },
+        {
+          "id": "efcc8c5f-1a72-4809-8ae5-50f419f7b4e1",
+          "version": 2,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "ATTACHMENT_ADDED",
+          "before": "DRAFT",
+          "after": "DRAFT",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:06.742198+00:00"
+        },
+        {
+          "id": "239f228e-e64d-4602-ba60-bb5c84138f36",
+          "version": 3,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "AWAITING_APPLICANT_SIGNATURE",
+          "before": "DRAFT",
+          "after": "AWAITING_APPLICANT_SIGNATURE",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:06.756633+00:00"
+        },
+        {
+          "id": "6485ec38-044a-4ec4-811a-1ab6229a58fe",
+          "version": 4,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "APPLICANT_SIGNED",
+          "before": "AWAITING_APPLICANT_SIGNATURE",
+          "after": "AWAITING_APPLICANT_SIGNATURE",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:06.771309+00:00"
+        },
+        {
+          "id": "5d4e28a0-b7a2-4078-9aea-16f40e7c93fd",
+          "version": 5,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "SUBMITTED",
+          "before": "AWAITING_APPLICANT_SIGNATURE",
+          "after": "SUBMITTED",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:06.784990+00:00"
+        },
+        {
+          "id": "f1bed303-7c06-4522-b3e8-b996141234d3",
+          "version": 6,
+          "actor": "system:local-reference",
+          "action": "VALIDATING",
+          "before": "SUBMITTED",
+          "after": "VALIDATING",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:06.792117+00:00"
+        },
+        {
+          "id": "3327e2c6-48cc-4506-8e39-f6b2b1ac6605",
+          "version": 7,
+          "actor": "system:local-reference",
+          "action": "UNDER_REVIEW",
+          "before": "VALIDATING",
+          "after": "UNDER_REVIEW",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:06.794463+00:00"
+        },
+        {
+          "id": "2445a080-6a28-40dc-9744-08054c7cca20",
+          "version": 8,
+          "actor": "6c63cb7e-a9d4-5f3c-93dc-df73422a0ab8",
+          "action": "APPROVED",
+          "before": "UNDER_REVIEW",
+          "after": "APPROVED",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:06.915221+00:00"
+        },
+        {
+          "id": "b8bccb61-843d-4d24-b80b-069d84944497",
+          "version": 9,
+          "actor": "system:decision",
+          "action": "AWAITING_OFFICER_SIGNATURE",
+          "before": "APPROVED",
+          "after": "AWAITING_OFFICER_SIGNATURE",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:06.918284+00:00"
+        },
+        {
+          "id": "28ad1c50-0bd7-47a7-b730-c96df2d09666",
+          "version": 10,
+          "actor": "8ab9ac50-d21f-5f25-ac51-33c41ab039c5",
+          "action": "COMPLETED",
+          "before": "AWAITING_OFFICER_SIGNATURE",
+          "after": "COMPLETED",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:06.984226+00:00"
+        }
+      ],
+      "sql_counts": {
+        "signature_records": 2,
+        "notifications": 1,
+        "external_checks": 1,
+        "audit_events": 10
+      }
+    },
+    {
+      "application_id": "bbfdf027-9f91-4e6c-b37c-e1c73d03a110",
+      "title": "Демо · Продление учебного разрешения",
+      "status": "UNDER_REVIEW",
+      "version": 7,
+      "document_hash": "324067a700040342e555bca0b99ff6929151e0c8af57c35efa8618ee7be6b3ac",
+      "audit": [
+        {
+          "id": "27fcd11d-0a11-4441-b995-8dca8da488e8",
+          "version": 1,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "CREATED",
+          "before": null,
+          "after": "DRAFT",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.118229+00:00"
+        },
+        {
+          "id": "fefbf0a4-1144-49f2-b8ca-c0b313606e46",
+          "version": 2,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "ATTACHMENT_ADDED",
+          "before": "DRAFT",
+          "after": "DRAFT",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.132687+00:00"
+        },
+        {
+          "id": "94f50bc3-b42c-43d6-8b8f-5bbf49eb7a3c",
+          "version": 3,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "AWAITING_APPLICANT_SIGNATURE",
+          "before": "DRAFT",
+          "after": "AWAITING_APPLICANT_SIGNATURE",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.143164+00:00"
+        },
+        {
+          "id": "437f509d-c1db-4a50-a691-fdb72faf24cf",
+          "version": 4,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "APPLICANT_SIGNED",
+          "before": "AWAITING_APPLICANT_SIGNATURE",
+          "after": "AWAITING_APPLICANT_SIGNATURE",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.155389+00:00"
+        },
+        {
+          "id": "54d3875b-da7f-426b-9938-569ab27ba7ab",
+          "version": 5,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "SUBMITTED",
+          "before": "AWAITING_APPLICANT_SIGNATURE",
+          "after": "SUBMITTED",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.168840+00:00"
+        },
+        {
+          "id": "820338cc-8d43-4c8a-90a0-cd70476269a5",
+          "version": 6,
+          "actor": "system:local-reference",
+          "action": "VALIDATING",
+          "before": "SUBMITTED",
+          "after": "VALIDATING",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.175423+00:00"
+        },
+        {
+          "id": "0bd3143b-c8e9-45bb-8e46-14308bd64fc7",
+          "version": 7,
+          "actor": "system:local-reference",
+          "action": "UNDER_REVIEW",
+          "before": "VALIDATING",
+          "after": "UNDER_REVIEW",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.177426+00:00"
+        }
+      ],
+      "sql_counts": {
+        "signature_records": 1,
+        "notifications": 0,
+        "external_checks": 1,
+        "audit_events": 7
+      }
+    },
+    {
+      "application_id": "f2bc39cc-b158-45cf-8eb0-4375e1ae2879",
+      "title": "Демо · Разрешение на учебную площадку",
+      "status": "NEEDS_CORRECTION",
+      "version": 8,
+      "document_hash": "2f4e636040111f821b6646a9f1412a6c267f8780e76c27d73500bab7927413e4",
+      "audit": [
+        {
+          "id": "82064e03-9f3d-4d96-aa40-37d6cdf9a90b",
+          "version": 1,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "CREATED",
+          "before": null,
+          "after": "DRAFT",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.268902+00:00"
+        },
+        {
+          "id": "ab1284cb-7f93-4065-ac18-bff851a5cfb0",
+          "version": 2,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "ATTACHMENT_ADDED",
+          "before": "DRAFT",
+          "after": "DRAFT",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.281999+00:00"
+        },
+        {
+          "id": "5a6e8ab9-1534-4319-9d53-85e1e3339d1e",
+          "version": 3,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "AWAITING_APPLICANT_SIGNATURE",
+          "before": "DRAFT",
+          "after": "AWAITING_APPLICANT_SIGNATURE",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.294201+00:00"
+        },
+        {
+          "id": "ceecada9-d75f-4b11-8311-7981190b21dc",
+          "version": 4,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "APPLICANT_SIGNED",
+          "before": "AWAITING_APPLICANT_SIGNATURE",
+          "after": "AWAITING_APPLICANT_SIGNATURE",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.306285+00:00"
+        },
+        {
+          "id": "ef1fff4a-7cad-4a77-9046-f401f6af1b85",
+          "version": 5,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "SUBMITTED",
+          "before": "AWAITING_APPLICANT_SIGNATURE",
+          "after": "SUBMITTED",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.318051+00:00"
+        },
+        {
+          "id": "ceeeb57b-9de5-4f63-be1f-39bd49673af5",
+          "version": 6,
+          "actor": "system:local-reference",
+          "action": "VALIDATING",
+          "before": "SUBMITTED",
+          "after": "VALIDATING",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.323628+00:00"
+        },
+        {
+          "id": "d7d84e9c-ee3f-4e3b-9157-26f6c06b1716",
+          "version": 7,
+          "actor": "system:local-reference",
+          "action": "UNDER_REVIEW",
+          "before": "VALIDATING",
+          "after": "UNDER_REVIEW",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.325387+00:00"
+        },
+        {
+          "id": "66e63a87-d218-423c-a4c5-02d3a2bb487c",
+          "version": 8,
+          "actor": "6c63cb7e-a9d4-5f3c-93dc-df73422a0ab8",
+          "action": "NEEDS_CORRECTION",
+          "before": "UNDER_REVIEW",
+          "after": "NEEDS_CORRECTION",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.392032+00:00"
+        }
+      ],
+      "sql_counts": {
+        "signature_records": 1,
+        "notifications": 0,
+        "external_checks": 1,
+        "audit_events": 8
+      }
+    },
+    {
+      "application_id": "00168d13-4913-41ce-9e48-2192921f7766",
+      "title": "Демо · Новый синтетический объект",
+      "status": "DRAFT",
+      "version": 1,
+      "document_hash": "e3708db75e29aca8953033094faa9275a42b947a3175adf31945be02fab26a78",
+      "audit": [
+        {
+          "id": "41ed7ece-fb01-458b-90b5-ba137ab4694c",
+          "version": 1,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "CREATED",
+          "before": null,
+          "after": "DRAFT",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.425173+00:00"
+        }
+      ],
+      "sql_counts": {
+        "signature_records": 0,
+        "notifications": 0,
+        "external_checks": 0,
+        "audit_events": 1
+      }
+    },
+    {
+      "application_id": "2074954a-32cb-4b5f-8075-59f5011b9bd3",
+      "title": "Демо · Решение для подписи",
+      "status": "AWAITING_OFFICER_SIGNATURE",
+      "version": 9,
+      "document_hash": "f280a90e0fd630aa3437e823ddb35e0250e3ae5c0af1a39fd9e10cb95c8633d0",
+      "audit": [
+        {
+          "id": "0de7084c-ee90-4d45-b300-076366c9d86a",
+          "version": 1,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "CREATED",
+          "before": null,
+          "after": "DRAFT",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.456840+00:00"
+        },
+        {
+          "id": "00676e5f-ea3e-4260-a332-686524f00ae5",
+          "version": 2,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "ATTACHMENT_ADDED",
+          "before": "DRAFT",
+          "after": "DRAFT",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.469379+00:00"
+        },
+        {
+          "id": "18187caf-1e34-4496-92e6-bda242cc6f7a",
+          "version": 3,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "AWAITING_APPLICANT_SIGNATURE",
+          "before": "DRAFT",
+          "after": "AWAITING_APPLICANT_SIGNATURE",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.477997+00:00"
+        },
+        {
+          "id": "1bd254ee-127a-446c-9fe5-4948c384ce91",
+          "version": 4,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "APPLICANT_SIGNED",
+          "before": "AWAITING_APPLICANT_SIGNATURE",
+          "after": "AWAITING_APPLICANT_SIGNATURE",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.488987+00:00"
+        },
+        {
+          "id": "b607d4e1-a4e5-4163-abba-72e1e4639f6d",
+          "version": 5,
+          "actor": "2c39f38c-e38b-5d1e-a9f5-289e81d80324",
+          "action": "SUBMITTED",
+          "before": "AWAITING_APPLICANT_SIGNATURE",
+          "after": "SUBMITTED",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.499502+00:00"
+        },
+        {
+          "id": "6ed77d8c-8110-4280-ade1-30b880465652",
+          "version": 6,
+          "actor": "system:local-reference",
+          "action": "VALIDATING",
+          "before": "SUBMITTED",
+          "after": "VALIDATING",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.505233+00:00"
+        },
+        {
+          "id": "11f3d4c5-7d3a-4134-bea7-ee35181054e9",
+          "version": 7,
+          "actor": "system:local-reference",
+          "action": "UNDER_REVIEW",
+          "before": "VALIDATING",
+          "after": "UNDER_REVIEW",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.507076+00:00"
+        },
+        {
+          "id": "6fdb7ef6-3ec0-4c9b-8741-0f6155ccf129",
+          "version": 8,
+          "actor": "6c63cb7e-a9d4-5f3c-93dc-df73422a0ab8",
+          "action": "APPROVED",
+          "before": "UNDER_REVIEW",
+          "after": "APPROVED",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.573761+00:00"
+        },
+        {
+          "id": "062fac2b-b4ba-4450-9d7a-986f929aa7dc",
+          "version": 9,
+          "actor": "system:decision",
+          "action": "AWAITING_OFFICER_SIGNATURE",
+          "before": "APPROVED",
+          "after": "AWAITING_OFFICER_SIGNATURE",
+          "correlation_id": "demo-reference-42",
+          "timestamp": "2026-10-15T09:47:07.575449+00:00"
+        }
+      ],
+      "sql_counts": {
+        "signature_records": 1,
+        "notifications": 0,
+        "external_checks": 1,
+        "audit_events": 9
+      }
+    }
+  ],
+  "limitations": [
+    "local-reference; no broker/HTTP Registry"
+  ]
+}

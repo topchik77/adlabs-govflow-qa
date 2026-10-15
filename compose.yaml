@@ -1,0 +1,52 @@
+name: adlabs-govflow
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: govflow
+      POSTGRES_PASSWORD: govflow-local
+      POSTGRES_DB: govflow
+    ports:
+      - "127.0.0.1:55434:5432"
+    volumes:
+      - govflow-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U govflow -d govflow"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  app:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://govflow:govflow-local@db:5432/govflow
+      PYTHONPATH: /app/services/core-api
+    ports:
+      - "127.0.0.1:8014:8014"
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["sh", "scripts/container-start.sh"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8014/api/v1/ready')"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  e2e:
+    profiles: ["e2e"]
+    build:
+      context: .
+      dockerfile: Dockerfile.e2e
+    env_file: .env
+    environment:
+      BASE_URL: http://127.0.0.1:8014
+    network_mode: service:app
+    init: true
+    shm_size: 1gb
+    volumes:
+      - ./reports:/app/reports
+    depends_on:
+      app:
+        condition: service_healthy
+volumes:
+  govflow-data:

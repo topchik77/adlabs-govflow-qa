@@ -1,0 +1,15 @@
+.env
+.venv/
+node_modules/
+frontend/demo-portal/dist/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+reports/*.png
+reports/demo-credentials.json
+frontend/demo-portal/test-results/
+frontend/demo-portal/playwright-report/
+frontend/demo-portal/*.tsbuildinfo
+reports/e2e-failures/
+reports/pytest-latest.xml

@@ -1,0 +1,35 @@
+name: GovFlow reference QA
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start isolated reference
+        run: |
+          sh scripts/start.sh
+      - name: Regression and contracts
+        run: |
+          docker compose exec -T app python -m pytest --tb=short --junitxml=/tmp/pytest.xml
+          docker compose exec -T app ruff check services scripts tests
+          docker compose exec -T app python scripts/check_traceability.py
+          docker compose exec -T app python -m alembic -c services/core-api/alembic.ini check
+      - name: Browser checks in Docker
+        run: |
+          docker compose --profile e2e run --build --rm e2e
+          docker compose --profile e2e run --rm e2e npm audit --audit-level=high
+      - name: Collect backend report
+        if: always()
+        run: |
+          mkdir -p reports
+          docker compose cp app:/tmp/pytest.xml reports/pytest.xml || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: govflow-reference-evidence
+          path: reports/
+      - name: Stop isolated reference
+        if: always()
+        run: docker compose down
