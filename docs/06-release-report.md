@@ -17,9 +17,11 @@
 | Traceability | 33 cases, все ссылки на существующие tests | `docs/tests/traceability.csv`, `scripts/check_traceability.py` |
 | Docker Compose app/db readiness | Healthy | `docker compose ps`, `/api/v1/ready` |
 | Реальные demo-примеры | 5 состояний, включая COMPLETED с 2 подписями | `reports/demo-evidence.json` (HTTP/audit/SQL counts) |
+| Fresh public clone + новая БД | Passed: Docker configuration, ready, login, create/persist | `reports/fresh-clone-verification.json` |
+| GitHub Actions Docker regression/E2E | 49 + 3 passed | `reports/ci/verification.json` |
 | npm dependency audit | 0 известных уязвимостей на момент локальной проверки | `npm audit` |
 
-Первый удалённый [GitHub Actions прогон](https://github.com/topchik77/adlabs-govflow-qa/actions/runs/38739137150) прошёл PostgreSQL regression и выявил UI race. Дефект [BUG-UI-001](defects/BUG-UI-001.md) воспроизведён детерминированным сценарием и исправлен; локальный повторный прогон: 3 passed. Повторный CI проверяет исправленный commit. Локальные результаты и результаты CI учитываются отдельно.
+Первый удалённый [GitHub Actions прогон](https://github.com/topchik77/adlabs-govflow-qa/actions/runs/38739137150) прошёл PostgreSQL regression и выявил UI race. Дефект [BUG-UI-001](defects/BUG-UI-001.md) воспроизведён детерминированным сценарием и исправлен; локальный повторный прогон: 3 passed. Повторный [CI-прогон 38740643670](https://github.com/topchik77/adlabs-govflow-qa/actions/runs/38740643670) завершился успешно на commit `0cab5b5`: 49 backend checks и 3 browser scenarios. [Raw JUnit и source manifest](../reports/ci/verification.json) сохранены из GitHub artifact; timestamp и source commit проверены. Отчёт backend выгружается до пересоздания контейнера, чтобы не подменять его локальным примером. Локальные результаты и результаты CI учитываются отдельно.
 
 ## Покрытые критические риски
 

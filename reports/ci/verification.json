@@ -1,0 +1,22 @@
+{
+  "run_url": "https://github.com/topchik77/adlabs-govflow-qa/actions/runs/38740643670",
+  "conclusion": "success",
+  "head_sha": "0cab5b5ecd0bb3c62b9c93b4551b93b10b69da3d",
+  "runner": "GitHub Actions Ubuntu, Docker",
+  "reports": {
+    "pytest.xml": {
+      "tests": "49",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-15T13:12:43.930103+00:00",
+      "hostname": "be33162f37bd"
+    },
+    "playwright.xml": {
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-15T13:13:29.021Z",
+      "hostname": ""
+    }
+  }
+}

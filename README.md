@@ -11,7 +11,9 @@ GovFlow моделирует обработку электронного зая�
 
 Проект показывает инженерный подход к качеству: **требование → риск → тест-дизайн → API/SQL-проверка → evidence → релизное решение**. Код приложения, автотесты и документация доступны для повторной проверки.
 
-**Проверенные локальные результаты:** 49 backend-проверок на PostgreSQL · 3 браузерных сценария · 33 связанных тест-кейса. Backend suite выполнен на Windows/Python 3.14 и Docker/Linux/Python 3.12. Параметризованные проверки учитываются как отдельные test executions. Актуальный статус GitHub Actions — в badge выше; локальные [JUnit-отчёты](reports/verification.json) сохранены отдельно.
+**Проверено локально и в CI:** 49 backend-проверок на PostgreSQL · 3 браузерных сценария · 33 связанных тест-кейса. Backend suite выполнен на Windows/Python 3.14 и Docker/Linux/Python 3.12. Параметризованные проверки учитываются как отдельные test executions. Актуальный статус GitHub Actions — в badge выше; локальные [JUnit-отчёты](reports/verification.json) сохранены отдельно.
+
+**GitHub Actions:** [успешный прогон на чистом runner](https://github.com/topchik77/adlabs-govflow-qa/actions/runs/38740643670) · [JUnit и привязка к commit](reports/ci/verification.json). Артефакты CI собираются отдельно от локальных примеров и содержат только результаты текущего запуска.
 
 ![GovFlow: заявления, статусы и разделение рабочих областей](docs/screenshots/desktop.png)
 

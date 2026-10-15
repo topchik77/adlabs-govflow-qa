@@ -2,7 +2,7 @@
 
 **Build:** 0.1.0, исходный commit `4c61ef1`. **Environment:** GitHub Actions Ubuntu, Docker, Chromium; локально Windows/Chromium с контролируемым порядком ответов. **Seed:** 42, tenant A.
 
-**Severity:** Medium. **Priority:** P2. **Status:** fixed; результат повторной проверки указан ниже. **Requirement:** FR-UI-02, FR-UI-05. **Test case:** TC-031.
+**Severity:** Medium. **Priority:** P2. **Status:** closed after regression retest; результат повторной проверки указан ниже. **Requirement:** FR-UI-02, FR-UI-05. **Test case:** TC-031.
 
 ## Проблема и влияние
 
@@ -39,4 +39,6 @@
 
 Тот же E2E обязан сначала увидеть «Отправлено», затем автоматически «На рассмотрении» и завершить процесс через reviewer/officer с двумя подписями и 10 audit events. Итоговый [Playwright JUnit](../../reports/playwright.xml) хранит результат повторного прогона.
 
-**Workaround до исправления:** ручное обновление карточки. **Lifecycle:** detected in CI → reproduced with controlled ordering → diagnosed → fixed → regression retest.
+**Workaround до исправления:** ручное обновление карточки. **Lifecycle:** detected in CI → reproduced with controlled ordering → diagnosed → fixed → regression retest → closed.
+
+**Remote retest:** [CI success](https://github.com/topchik77/adlabs-govflow-qa/actions/runs/38740643670), commit `0cab5b5`, 3 browser scenarios passed; [raw JUnit](../../reports/ci/playwright.xml).

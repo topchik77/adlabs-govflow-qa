@@ -1,0 +1,10 @@
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="6.912148999999999">
+<testsuite name="reference.spec.ts" timestamp="2026-10-15T13:13:29.021Z" hostname="" tests="3" failures="0" skipped="0" time="5.905" errors="0">
+<testcase name="UI: applicant → reviewer → officer, attachments and audit" classname="reference.spec.ts" time="4.758">
+</testcase>
+<testcase name="mobile layout and live search empty state" classname="reference.spec.ts" time="0.48">
+</testcase>
+<testcase name="QA observer sees real monitor and cannot browse applications" classname="reference.spec.ts" time="0.667">
+</testcase>
+</testsuite>
+</testsuites>
