@@ -19,7 +19,7 @@
 | Реальные demo-примеры | 5 состояний, включая COMPLETED с 2 подписями | `reports/demo-evidence.json` (HTTP/audit/SQL counts) |
 | npm dependency audit | 0 известных уязвимостей на момент локальной проверки | `npm audit` |
 
-CI workflow подготовлен для самостоятельного репозитория и отдельный dispatcher для текущей папки заданий. **Удалённый GitHub Actions запуск не выполнялся**; локальные команды проверены. Локальные результаты не выдаются за результаты CI.
+Первый удалённый [GitHub Actions прогон](https://github.com/topchik77/adlabs-govflow-qa/actions/runs/38739137150) прошёл PostgreSQL regression и выявил UI race. Дефект [BUG-UI-001](defects/BUG-UI-001.md) воспроизведён детерминированным сценарием и исправлен; локальный повторный прогон: 3 passed. Повторный CI проверяет исправленный commit. Локальные результаты и результаты CI учитываются отдельно.
 
 ## Покрытые критические риски
 
@@ -29,7 +29,7 @@ CI workflow подготовлен для самостоятельного ре�
 
 - Независимый HTTP Registry, RabbitMQ, outbox dispatcher/inbox, retry/backoff/DLQ и recovery после падения отсутствуют. BackgroundTasks может оставить SUBMITTED при остановке процесса.
 - Внешние уведомления отсутствуют; есть только уникальная запись LOCAL_INBOX.
-- Нет mutants/Fault Engine, поэтому 5 подтверждённых баг-репортов и mutation effectiveness не заявляются. Каталог из ТЗ не выдаётся за реально воспроизведённые дефекты.
+- Нет mutants/Fault Engine; 5 баг-репортов и mutation effectiveness не заявляются. Отдельно задокументирован один реальный UI-дефект BUG-UI-001, обнаруженный в CI и воспроизведённый на исходной сборке.
 - WorkLab lab API, grader, изоляция learner runs, Markdown LMS и виртуальное SLA не реализованы.
 - Нет нагрузочного benchmark, антивируса файлов, полноценного security audit или сертификата доступности.
 - В подписи используется учебный HMAC. Свойства юридической ЭЦП не заявляются.

@@ -34,7 +34,7 @@
 | TC-028 | FR-EXT-06 | P1 transaction | Черновик и 1 audit/outbox | Transition в транзакции, controlled exception перед commit | Откат статуса, audit/outbox count=1 | fixture |
 | TC-029 | FR-APP-05 | P1 state machine | Все 11 статусов | Для каждого статуса вызвать все запрещённые переходы | Каждый INVALID_TRANSITION | fixture |
 | TC-030 | FR-AUDIT-01 | P1 contract | API reference | OpenAPI submit schema, X-Correlation-ID, ready | Typed ApplicationView, required Idempotency-Key, 202; correlation возвращён; DB ready | fixture |
-| TC-031 | FR-UI-02 | P1 UI/E2E | Запущенный demo, три роли A | Через UI создать, upload, sign, review, sign decision, audit | COMPLETED, 10 audit событий, screenshot | Синтетическое заявление остаётся; reset локально |
+| TC-031 | FR-UI-02 | P1 UI/E2E | Запущенный demo, три роли A | Через UI создать, upload, sign, submit; первый GET=snapshot SUBMITTED, затем автоматический UNDER_REVIEW; review, sign decision, audit | COMPLETED, 10 audit событий, screenshot; регрессия BUG-UI-001 | Синтетическое заявление остаётся; reset локально |
 | TC-032 | FR-UI-05 | P2 responsive/UI | Applicant B, viewport390×844 | Поиск несуществующего названия | Пустое состояние; scrollWidth≤viewport | Сброс поиска |
 | TC-033 | FR-UI-04 | P1 UI/privacy | QA observer A | Войти, открыть монитор | Реальные данные local-reference; list/review nav disabled | Logout |
 

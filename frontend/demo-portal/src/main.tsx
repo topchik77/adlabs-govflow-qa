@@ -199,6 +199,40 @@ function Portal() {
     return () => clearTimeout(timer);
   }, [items, refresh]);
 
+  // The selected card owns its own snapshot. The list may already be current
+  // while the first card GET after 202 still reports SUBMITTED (BUG-UI-001).
+  useEffect(() => {
+    if (
+      !selected ||
+      loginOpen ||
+      !user ||
+      busy ||
+      !["SUBMITTED", "VALIDATING"].includes(selected.business_status)
+    )
+      return;
+    let active = true;
+    const applicationId = selected.id;
+    const timer = setTimeout(async () => {
+      try {
+        const [current, events, checks] = await Promise.all([
+          api<Application>(`/applications/${applicationId}`),
+          api<Audit[]>(`/applications/${applicationId}/audit`),
+          api<Integration[]>(`/applications/${applicationId}/integrations`),
+        ]);
+        if (!active) return;
+        setSelected(current);
+        setAudit(events);
+        setIntegrations(checks);
+      } catch (error) {
+        if (active) fail(error);
+      }
+    }, 1200);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [selected, loginOpen, user, busy, fail]);
+
   const open = async (id: string) => {
     try {
       const [app, events, checks] = await Promise.all([

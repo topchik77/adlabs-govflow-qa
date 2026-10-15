@@ -41,13 +41,11 @@ test("UI: applicant → reviewer → officer, attachments and audit", async ({
     .click();
   const drawer = page.getByRole("dialog", { name: "Карточка заявления" });
   await expect(drawer).toBeVisible();
-  await drawer
-    .locator("input[type=file]")
-    .setInputFiles({
-      name: "ui-synthetic.pdf",
-      mimeType: "application/pdf",
-      buffer: Buffer.from("%PDF-1.7\nSYNTHETIC UI FIXTURE\n%%EOF"),
-    });
+  await drawer.locator("input[type=file]").setInputFiles({
+    name: "ui-synthetic.pdf",
+    mimeType: "application/pdf",
+    buffer: Buffer.from("%PDF-1.7\nSYNTHETIC UI FIXTURE\n%%EOF"),
+  });
   await expect(
     drawer.getByText("ui-synthetic.pdf", { exact: true }),
   ).toBeVisible();
@@ -57,7 +55,39 @@ test("UI: applicant → reviewer → officer, attachments and audit", async ({
   await drawer
     .getByRole("button", { name: "Подписать учебной подписью" })
     .click();
+  await expect(
+    drawer.getByRole("button", { name: "Отправить заявление" }),
+  ).toBeVisible();
+  // A 202 can be followed by a legitimate SUBMITTED snapshot before the
+  // background transition finishes. Force that ordering independently of CPU.
+  const applicationId = await drawer.locator(".drawer-id code").textContent();
+  const acceptedResponse = page.waitForResponse(
+    (response) =>
+      response.url().endsWith(`/applications/${applicationId}/submit`) &&
+      response.status() === 202,
+  );
+  let servedPendingSnapshot = false;
+  await page.route(`**/api/v1/applications/${applicationId}`, async (route) => {
+    if (route.request().method() !== "GET" || servedPendingSnapshot) {
+      await route.continue();
+      return;
+    }
+    const accepted = await (await acceptedResponse).json();
+    const response = await route.fetch();
+    const document = await response.json();
+    servedPendingSnapshot = true;
+    await route.fulfill({
+      response,
+      json: {
+        ...document,
+        business_status: accepted.business_status,
+        processing_status: accepted.processing_status,
+        version: accepted.version,
+      },
+    });
+  });
   await drawer.getByRole("button", { name: "Отправить заявление" }).click();
+  await expect(drawer.locator(".drawer-meta")).toContainText("Отправлено");
   await expect(drawer.locator(".drawer-meta")).toContainText("На рассмотрении");
   await changeRole(page, "reviewer.a");
   await page.getByRole("button", { name: new RegExp(title) }).click();

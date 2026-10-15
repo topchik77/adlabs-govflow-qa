@@ -1,0 +1,10 @@
+{
+  "source": "public GitHub clone",
+  "database": "new isolated PostgreSQL volume",
+  "ready": "ready",
+  "login": "passed",
+  "initial_applications": 0,
+  "create_status": 201,
+  "persisted_applications": 1,
+  "host_python_or_node_needed": false
+}

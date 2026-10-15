@@ -1,0 +1,46 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="7.123616">
+<testsuite name="reference.spec.ts" timestamp="2026-10-15T13:05:10.037Z" hostname="" tests="1" failures="1" skipped="0" time="6.306" errors="0">
+<testcase name="UI: applicant → reviewer → officer, attachments and audit" classname="reference.spec.ts" time="6.306">
+<failure message="reference.spec.ts:23:1 UI: applicant → reviewer → officer, attachments and audit" type="FAILURE">
+<![CDATA[  reference.spec.ts:23:1 › UI: applicant → reviewer → officer, attachments and audit ───────────────
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('dialog', { name: 'Карточка заявления' }).locator('.drawer-meta')
+    Expected substring: "На рассмотрении"
+    Received string:    "Отправленоv5 · документ rev 2"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Карточка заявления' }).locator('.drawer-meta')
+        9 × locator resolved to <div class="drawer-meta">…</div>
+          - unexpected value "Отправленоv5 · документ rev 2"
+
+
+      89 |   await drawer.getByRole("button", { name: "Отправить заявление" }).click();
+      90 |   await expect(drawer.locator(".drawer-meta")).toContainText("Отправлено");
+    > 91 |   await expect(drawer.locator(".drawer-meta")).toContainText("На рассмотрении");
+         |                                                ^
+      92 |   await changeRole(page, "reviewer.a");
+      93 |   await page.getByRole("button", { name: new RegExp(title) }).click();
+      94 |   await drawer
+        at C:\Users\Lenovo\Desktop\My-projects\tech-tasks\Vibecoder-arqa-taxi\adlabs-govflow-qa\frontend\demo-portal\e2e\reference.spec.ts:91:48
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\..\reports\e2e-failures\reference-UI-applicant-→-r-00021-ficer-attachments-and-audit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\..\reports\e2e-failures\reference-UI-applicant-→-r-00021-ficer-attachments-and-audit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-failures\reference-UI-applicant-→-r-00021-ficer-attachments-and-audit\test-failed-1.png]]
+
+[[ATTACHMENT|e2e-failures\reference-UI-applicant-→-r-00021-ficer-attachments-and-audit\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
