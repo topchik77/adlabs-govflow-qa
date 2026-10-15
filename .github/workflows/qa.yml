@@ -5,6 +5,8 @@ permissions:
 jobs:
   reference:
     runs-on: ubuntu-latest
+    env:
+      EVIDENCE_DIR: ../../reports/ci-current
     steps:
       - uses: actions/checkout@v4
       - name: Start isolated reference
@@ -16,20 +18,21 @@ jobs:
           docker compose exec -T app ruff check services scripts tests
           docker compose exec -T app python scripts/check_traceability.py
           docker compose exec -T app python -m alembic -c services/core-api/alembic.ini check
+      - name: Collect backend report before container replacement
+        if: always()
+        run: |
+          mkdir -p reports/ci-current
+          docker compose cp app:/tmp/pytest.xml reports/ci-current/pytest.xml
+          printf '{"commit":"%s","run_id":"%s"}\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" > reports/ci-current/source.json
       - name: Browser checks in Docker
         run: |
           docker compose --profile e2e run --build --rm e2e
           docker compose --profile e2e run --rm e2e npm audit --audit-level=high
-      - name: Collect backend report
-        if: always()
-        run: |
-          mkdir -p reports
-          docker compose cp app:/tmp/pytest.xml reports/pytest.xml || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: govflow-reference-evidence
-          path: reports/
+          path: reports/ci-current/
       - name: Stop isolated reference
         if: always()
         run: docker compose down

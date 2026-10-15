@@ -40,6 +40,7 @@ services:
     env_file: .env
     environment:
       BASE_URL: http://127.0.0.1:8014
+      EVIDENCE_DIR: ${EVIDENCE_DIR:-../../reports}
     network_mode: service:app
     init: true
     shm_size: 1gb

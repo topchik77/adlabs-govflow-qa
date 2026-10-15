@@ -1,5 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
 import { readFileSync } from "node:fs";
+const evidenceDirectory = process.env.EVIDENCE_DIR || "../../reports";
 const password =
   process.env.DEMO_PASSWORD ||
   readFileSync(new URL("../../../.env", import.meta.url), "utf8")
@@ -107,11 +108,11 @@ test("UI: applicant → reviewer → officer, attachments and audit", async ({
   await drawer.getByRole("button", { name: /^Аудит/ }).click();
   await expect(drawer.locator(".timeline-event")).toHaveCount(10);
   await page.screenshot({
-    path: "../../reports/ui-completed.png",
+    path: `${evidenceDirectory}/ui-completed.png`,
     fullPage: true,
   });
   await drawer.getByRole("button", { name: "Закрыть карточку" }).click();
-  await page.screenshot({ path: "../../reports/desktop.png", fullPage: true });
+  await page.screenshot({ path: `${evidenceDirectory}/desktop.png`, fullPage: true });
 });
 
 test("mobile layout and live search empty state", async ({ page }) => {
@@ -132,7 +133,7 @@ test("mobile layout and live search empty state", async ({ page }) => {
     viewport: innerWidth,
   }));
   expect(widths.doc).toBeLessThanOrEqual(widths.viewport);
-  await page.screenshot({ path: "../../reports/mobile.png", fullPage: true });
+  await page.screenshot({ path: `${evidenceDirectory}/mobile.png`, fullPage: true });
 });
 
 test("QA observer sees real monitor and cannot browse applications", async ({
@@ -152,5 +153,5 @@ test("QA observer sees real monitor and cannot browse applications", async ({
   await expect(
     page.getByRole("button", { name: "Очередь рассмотрения" }),
   ).toBeDisabled();
-  await page.screenshot({ path: "../../reports/monitor.png", fullPage: true });
+  await page.screenshot({ path: `${evidenceDirectory}/monitor.png`, fullPage: true });
 });

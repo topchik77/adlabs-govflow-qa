@@ -13,3 +13,4 @@ frontend/demo-portal/playwright-report/
 frontend/demo-portal/*.tsbuildinfo
 reports/e2e-failures/
 reports/pytest-latest.xml
+reports/ci-current/
